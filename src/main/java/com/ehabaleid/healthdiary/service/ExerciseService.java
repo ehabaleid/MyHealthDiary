@@ -29,10 +29,7 @@ public class ExerciseService {
     private ExerciseRepository exerciseRepository;
 
     public Exercise[] fetchExerciseInformation(String userQuery) throws JSONException, JsonProcessingException {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("internet.ford.com", 83));
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setProxy(proxy);
-        RestTemplate restTemplate = new RestTemplate(requestFactory);
+        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = FoodNutritionService.setupNutritionAPIHttpHeader();
         LinkedMultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("query", userQuery);
