@@ -23,13 +23,13 @@ public class HealthDiaryApplication {
 		SpringApplication.run(HealthDiaryApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(UserRepository userRepository) {
-		return args -> {
-			User bob = new User("Bob Smith", "test@gmail.com", BCrypt.hashpw("pass", BCrypt.gensalt()), "Bob@gmail.com", "ADMIN", true);
-			bob.setEnabled(true);
-			userRepository.save(bob);
-		};
-	}
+//	@Bean
+//	CommandLineRunner commandLineRunner(UserRepository userRepository) {
+//		return args -> {
+//			User bob = new User("Bob Smith", "test@gmail.com", BCrypt.hashpw("pass", BCrypt.gensalt()), "Bob@gmail.com", "ADMIN", true);
+//			bob.setEnabled(true);
+//			userRepository.save(bob);
+//		};
+//	}
 
 }

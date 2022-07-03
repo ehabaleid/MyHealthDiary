@@ -30,10 +30,7 @@ public class FoodNutritionService {
 
 
     public Food[] fetchNutritionInformation(String userQuery) throws JSONException, JsonProcessingException {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("internet.ford.com", 83));
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setProxy(proxy);
-        RestTemplate restTemplate = new RestTemplate(requestFactory);
+		RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = setupNutritionAPIHttpHeader();
         LinkedMultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("query", userQuery);
@@ -50,8 +47,8 @@ public class FoodNutritionService {
 
     public static HttpHeaders setupNutritionAPIHttpHeader() {
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("x-app-id", "7127fd1e");
-        httpHeaders.add("x-app-key", "00de0852e4656b126a55a1ec12348864");
+        httpHeaders.add("x-app-id", System.getenv("NUTRITION_API_ID"));
+        httpHeaders.add("x-app-key", System.getenv("NUTRITION_API_KEY"));
         httpHeaders.add("x-remote-user-id", "0");
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
