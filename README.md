@@ -1,5 +1,4 @@
 # MyHealthDiary App
----
 
 MyHealthDiary is a web application that allows users save, track, and analyze
 track their nutrition data, exercise data, and memories in a single online hub.
