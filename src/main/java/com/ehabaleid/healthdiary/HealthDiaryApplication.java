@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 @EnableJpaAuditing
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = {UserRepository.class, FoodRepository.class, MemoryRepository.class, ExerciseRepository.class})
-
 public class HealthDiaryApplication {
 
 	public static void main(String[] args) {

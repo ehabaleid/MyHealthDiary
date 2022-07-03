@@ -1,16 +1,17 @@
 package com.ehabaleid.healthdiary.model.user;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "AppUser")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private @Id @GeneratedValue int id;
 	private String name;
 	private String username;
 	private String password;

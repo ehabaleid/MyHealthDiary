@@ -12,30 +12,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    UserRepository userRepository;
+	UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username + "not found");
-        }
-        return new AppUserDetails(user);
-    }
+	public AppUserDetailsService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
-
-    public int loadUserIdByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username + "not found");
-        }
-        return user.getId();
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByUsername(username);
+		if (user == null) {
+			throw new UsernameNotFoundException(username + "not found");
+		}
+		return new AppUserDetails(user);
+	}
 
 
-    public User getUserByUsername(String name) {
-        return userRepository.findByUsername(name);
-    }
+	public int loadUserIdByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByUsername(username);
+		if (user == null) {
+			throw new UsernameNotFoundException(username + "not found");
+		}
+		return user.getId();
+	}
 
+
+	public User getUserByUsername(String name) {
+		return userRepository.findByUsername(name);
+	}
+
+	public User getUserById(int id) {
+		return userRepository.getById(id);
+	}
 }
